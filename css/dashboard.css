@@ -1,0 +1,46 @@
+body{
+    background-color: #38E1D7;
+}
+/* Navigation Bar */
+
+  .navbar-brand {
+    font-family: "Ubuntu";
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-left: 2rem;
+  }
+  
+  .nav-item {
+    padding: 0 18px;
+  }
+  
+  .nav-link {
+    font-size: 1rem;
+    font-family: "Montserrat";
+    color: #fff !important;
+  }
+  
+  .navbar-nav {
+    margin-right: 2rem;
+  }
+
+  .btn-primary{
+    margin-top: 4px;
+  }
+
+  /* Content */
+  #bills{
+    margin-top: 4rem;
+  }
+
+  .card{
+    padding-bottom: 3rem;
+  }
+  .card:hover{
+    box-shadow: black;
+  }
+  .amt{
+    font-size: 18px;
+    font-weight: 500;
+    color: #2d2d2d;
+  }

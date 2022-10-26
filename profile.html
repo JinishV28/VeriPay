@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="utf-8">
-  <title>Dashboard</title>
+  <title>Profile</title>
   <link rel="stylesheet" href="dashboard.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   
@@ -27,18 +27,15 @@
 
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="dashboard.html">Dashboard</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#bills">Upcoming Bills</a>
+            <a class="nav-link" href="dashboard.html#bills">Upcoming Bills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#signIn">Logout</a>
+            <a class="nav-link" href="index.html">Logout</a>
           </li>
-          <!-- <li class="nav-item">
-              <button class="btn btn-primary " type="button" style="font-family: Montserrat;" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</button>
-          </li> -->
-
+          
         </ul>
 
       </div>
@@ -46,33 +43,22 @@
     <section class="content">
       <div class="container">
         <h1 class="hello">Hello, <span>User</span></h1>
-        <div class="row">
-          <div class="col">
+        <div class="row justify-content-center" style="text-align: center;">
+          <div class="col-6 col-sm-10 col-lg-6 ">
             <div class="card">
-              <h2>Income</h2><br>
-              <p class="amt">Rs. 25000</p>
+              <h4>First Name:</h4>
+              <p class="firstname">firstname</p>
+              <h4>Last Name:</h4>
+              <p class="lastname">lastname</p>
+              <h4>Email</h4>
+              <p class="emailid">emailid@gmail.com</p>
+              <h5>Contact Number:</h5>
+              <p class="contact_no">##########</p>
+              <h5>Monthly Income: </h5>
+              <p class="income">Rs. <span>20000</span> </p>
             </div>
           </div>
-          <div class="col">
-            <div class="card">
-              <h2>Expenditure</h2><br>
-              <p class="amt">Rs. 2000</p>
-            </div>
-          </div>
-          <div class="col">
-            <div class="card">
-              <h2>Balance</h2><br>
-              <p class="amt">Rs. 23000</p>
-            </div>
-          </div>
-        </div>
-        <div class="row " id="bills">
-          <div class="col">
-            <div class="card">
-              <h2>Upcoming Bills</h2><br>
-            </div>
-          </div>
-        </div>
+        
       </div>
 
     </section>

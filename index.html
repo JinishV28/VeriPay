@@ -56,7 +56,7 @@
         <div class="col-lg-6 offset-lg-1">
           <h1 class="big-heading">Verification of <br>Payments <br />made easy.</h1>
           <button type="button" class="btn btn-primary btn-lg download-button" data-bs-toggle="modal" data-bs-target="#signUp"> Sign Up</button>
-          <button type="button" class="btn btn-warning btn-lg download-button" data-bs-toggle="modal" data-bs-target="#signIn" style="color: white;"> Sign In</button>
+          <button type="button" class="btn btn-secondary btn-lg download-button" data-bs-toggle="modal" data-bs-target="#signIn"> Sign In</button>
 
         </div>
 
@@ -79,7 +79,7 @@
         </div>
         <div class="modal-body">
           <div class="modal-login-content">
-            <form action="/action_page.php" method="post" autocomplete="off">
+            <form id="signinForm">
 
               <div class="container">
                 <label for="uname"><b>Username</b></label>
@@ -88,11 +88,11 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" class="form-control" placeholder="Enter Your Password" name="psw" required>
                 <div class="row row-content justify-content-center">
-                  <button type="submit" class="col-6 login-btn">Login</button>
+                  <button id="signinBtn" type="submit" class="col-6 login-btn">Login</button>
                   <p class="row justify-content-center" style="color:red;">Dont have an account? Sign up.</p>
                 </div>
               </div>
-
+              <div id="alert1" class="alert"></div>
             </form>
 
 
@@ -116,26 +116,25 @@
         </div>
         <div class="modal-body">
           <div class="modal-login-content">
-            <form action="/action_page.php" method="post" autocomplete="off">
-
+            <form id="signupForm">
               <div class="container">
                 <label for="uname"><b>Username</b></label>
                 <input type="text" class="form-control" placeholder="Set Your Username" name="uname" required>
 
                 <label for="Email"><b>Email address</b></label>
-                <input type="email" class="form-control" placeholder="Your Email" id="Email" style="padding: 10px; margin: 7px 0px;">
+                <input type="email" class="form-control" placeholder="Your Email" name="email" style="padding: 10px; margin: 7px 0px;" required>
 
                 <label for="psw"><b>Password</b></label>
                 <input type="password" class="form-control" placeholder="Create Password" name="psw" required>
 
                 <label for="psw"><b>Confirm Password</b></label>
-                <input type="password" class="form-control" placeholder="Confirm Password" name="psw" required>
+                <input type="password" class="form-control" placeholder="Confirm Password" name="confirmpsw" required>
 
                 <div class="row row-content justify-content-center">
-                  <button type="submit" class="col-6 login-btn">Sign Up</button>
+                  <button id="signupBtn" type="submit" class="col-6 login-btn">Sign Up</button>
                 </div>
+                <div id="alert2" class="alert"></div>
               </div>
-
             </form>
 
 
@@ -148,10 +147,87 @@
       </div>
     </div>
   </div>
-
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-  <script>
 
+  <!--Sign Up Script-->
+  <script>
+    $(document).ready(function(){
+      $("#signupBtn").on('click', function(){
+        var alert = document.getElementById("alert2");
+        const form = $("#signupForm")[0];
+        fetch("signup.php", {
+        method : "POST",
+        body: new FormData(form)
+        })
+        .then(response=>response.json())
+        .then(json =>
+        {
+          console.log(json[0], json[1]);
+            if(json[0] == 1){
+              alert.classList.add("alert-success");
+              alert.innerHTML = "<center><b>Registration successful.<b><center>";
+            }
+            else{
+              if(json[1]==1){
+                alert.classList.add("alert-danger");
+                alert.innerHTML = "<center><b>Confirm Password Doesn't Match Password.<b><center>";
+              }
+              else if(json[1]==2){
+                alert.classList.add("alert-danger");
+                alert.innerHTML = "<center><b>Password Should Be Of 8 Characters Atleast.<b><center>";
+              }
+              else if(json[1]==3){
+                alert.classList.add("alert-warning");
+                alert.innerHTML = "<center><b>Username Already Taken. Try Another Username.<b><center>";
+              }
+              else{
+                alert.classList.add("alert-warning");
+                alert.innerHTML = "<center><b>Email Already In Use. Try Again.<b><center>";
+              }
+            }
+        });
+        return false;
+      });
+    });
+  </script>
+
+  <!--Sign In Script-->
+  <script>
+    function pageRedirect() {
+      window.location.replace("dashboard.html");
+    }
+    $(document).ready(function(){
+      $("#signinBtn").on('click', function(){
+        var alert = document.getElementById("alert1");
+        const form = $("#signinForm")[0];
+        fetch("signin.php", {
+        method : "POST",
+        body: new FormData(form)
+        })
+        .then(response=>response.json())
+        .then(json =>
+        {
+          console.log(json[0]);
+            if(json[0] == 1){
+              alert.classList.add("alert-success");
+              alert.innerHTML = "<center><b>Signed In successfully.<b><center>";     
+              setTimeout("pageRedirect()", 2000);
+            }
+            else{
+              if(json[1]==1){
+                alert.classList.add("alert-danger");
+                alert.innerHTML = "<center><b>Wrong Password.<b><center>";
+              }
+              else{
+                alert.classList.add("alert-warning");
+                alert.innerHTML = "<center><b>Not Signed Up Yet. <a class=\"alert-link\" href=\"sign-up.html\">Sign Up<a><b><center>";
+              }
+            }
+        });
+        return false;
+      });
+    });
   </script>
 </body>
 

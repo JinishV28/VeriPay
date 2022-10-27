@@ -13,6 +13,10 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
   <link rel="stylesheet" href="css/dashboard.css">
+
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+ 
+
 </head>
 
 <body>
@@ -69,17 +73,57 @@
             </div>
           </div>
         </div>
+        
+        <div class="row justify-content-center">
+          <div class="col">
+            <div class="card" style="padding-bottom: 0;">
+              <h2>Monthly Expense Chart</h2><br>
+              <div id="calendar_basic" style="width: 1000px; height: 350px;">
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="row " id="bills">
           <div class="col">
-            <div class="card">
+            <div class="card" style="margin-bottom: 2rem;">
               <h2>Upcoming Bills</h2><br>
             </div>
           </div>
         </div>
       </div>
+      
 
     </section>
 
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["calendar"]});
+      google.charts.setOnLoadCallback(drawChart);
+  
+   function drawChart() {
+       var dataTable = new google.visualization.DataTable();
+       dataTable.addColumn({ type: 'date', id: 'Date' });
+       dataTable.addColumn({ type: 'number', id: 'Expense' });
+       dataTable.addRows([
+          [ new Date(2022, 9, 13), 370 ],
+          [ new Date(2022, 9, 14), 383 ],
+          [ new Date(2022, 9, 15), 450 ],
+          [ new Date(2022, 9, 16), 381 ],
+          [ new Date(2022, 9, 17), 220 ],
+          
+        ]);
+  
+       var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
+  
+       var options = {
+         title: "Expenditure",
+         height: 250,
+       };
+  
+       chart.draw(dataTable, options);
+   }
+    </script>
+    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 </body>

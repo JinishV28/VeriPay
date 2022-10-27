@@ -241,6 +241,28 @@
       });
     });
   </script>
+
+  <!-- Desktop notification -->
+  <script>
+    function showNotification() {
+   const notification = new Notification("New message incoming", {
+      body: "Hi there. Welcome to VeriPay!",
+      
+   })
+}
+    console.log(Notification.permission);
+    if (Notification.permission === "granted") {
+       showNotification();
+    } else if (Notification.permission !== "denied") {
+       Notification.requestPermission().then(permission => {
+          if(permission==="granted"){
+            showNotification();
+          }
+       });
+    }
+    
+ </script>
+
 </body>
 
 </html>

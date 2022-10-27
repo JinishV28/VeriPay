@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -17,7 +20,7 @@
     <!-- Navigation Bar -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
-      <a class="navbar-brand" href="">VeriPay</a>
+      <a class="navbar-brand" href="index.html">VeriPay</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02">
         <span class="navbar-toggler-icon"></span>
@@ -27,7 +30,7 @@
 
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="dashboard.html">Dashboard</a>
+            <a class="nav-link" href="dashboard.php">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="dashboard.html#bills">Upcoming Bills</a>
@@ -42,7 +45,7 @@
     </nav>
     <section class="content">
       <div class="container">
-        <h1 class="hello">Hello, <span>User</span></h1>
+        <h1 class="hello">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
         <div class="row justify-content-center" style="text-align: center;">
           <div class="col-6 col-sm-10 col-lg-6 ">
             <div class="card">

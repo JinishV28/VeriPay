@@ -118,6 +118,18 @@
           <div class="modal-login-content">
             <form id="signupForm">
               <div class="container">
+                <label for="fname"><b>First Name</b></label>
+                <input type="text" class="form-control" placeholder="First Name" name="fname" required>
+
+                <label for="lname"><b>Last Name</b></label>
+                <input type="text" class="form-control" placeholder="Last Name" name="lname" required>
+
+                <label for="minc"><b>Monthly Income</b></label>
+                <input type="number" class="form-control" placeholder="INR" name="minc" required>
+
+                <label for="phoneno"><b>Phone No.</b></label>
+                <input type="tel" class="form-control" placeholder="Mobile Number" name="phoneno" required>
+
                 <label for="uname"><b>Username</b></label>
                 <input type="text" class="form-control" placeholder="Set Your Username" name="uname" required>
 
@@ -195,7 +207,7 @@
   <!--Sign In Script-->
   <script>
     function pageRedirect() {
-      window.location.replace("dashboard.html");
+      window.location.replace("dashboard.php");
     }
     $(document).ready(function(){
       $("#signinBtn").on('click', function(){

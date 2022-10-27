@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 
@@ -27,13 +30,13 @@
 
         <ul class="navbar-nav ms-auto">
           <li class="nav-item">
-            <a class="nav-link" href="#">Profile</a>
+            <a class="nav-link" href="profile.php">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#bills">Upcoming Bills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#staticBackdrop" data-bs-toggle="modal" data-bs-target="#signIn">Logout</a>
+            <a class="nav-link" href="index.html">Logout</a>
           </li>
           <!-- <li class="nav-item">
               <button class="btn btn-primary " type="button" style="font-family: Montserrat;" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</button>
@@ -45,7 +48,7 @@
     </nav>
     <section class="content">
       <div class="container">
-        <h1 class="hello">Hello, <span>User</span></h1>
+        <h1 class="hello">Hello, <span><?php echo $_SESSION['username']; ?></span></h1>
         <div class="row">
           <div class="col">
             <div class="card">

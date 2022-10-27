@@ -1,6 +1,10 @@
 <?php
 	require 'dbconnection.php';
 	
+	$firstname = $_POST['fname'];
+	$lastname = $_POST['lname'];
+	$monthly_inc = $_POST['minc'];
+	$phoneno = $_POST['phoneno'];
 	$username = $_POST['uname'];
 	$email = $_POST['email'];
 	$password = $_POST['psw'];
@@ -21,8 +25,8 @@
 			{
 				if($password == $confirmPassword)
 				{
-					$sql = $conn->prepare("INSERT INTO signup_info(username, email, password) VALUES(?, ?, ?);");
-					$sql->bind_param("sss", $username, $email, $password);
+					$sql = $conn->prepare("INSERT INTO signup_info(first_name, last_name, monthly_income, phone_no, username, email, password) VALUES(?, ?, ?, ?, ?, ?, ?);");
+					$sql->bind_param("sssssss", $firstname, $lastname, $monthly_inc, $phoneno, $username, $email, $password);
 					$sql->execute();
 					$success[0] = 1;
 				}

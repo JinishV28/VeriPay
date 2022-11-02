@@ -52,24 +52,24 @@
     </nav>
     <section class="content">
       <div class="container">
-        <h1 class="hello">Hello, <span><?php echo $_SESSION['username']; ?></span></h1>
+        <h1 class="hello">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
         <div class="row">
           <div class="col">
             <div class="card">
               <h2>Income</h2><br>
-              <p class="amt">Rs. 25000</p>
+              <p class="amt"><?php echo $_SESSION['monthly_inc'];?></p>
             </div>
           </div>
           <div class="col">
             <div class="card">
               <h2>Expenditure</h2><br>
-              <p class="amt">Rs. 2000</p>
+              <p class="amt">Rs. NAN</p>
             </div>
           </div>
           <div class="col">
             <div class="card">
               <h2>Balance</h2><br>
-              <p class="amt">Rs. 23000</p>
+              <p class="amt">Rs. NAN</p>
             </div>
           </div>
         </div>

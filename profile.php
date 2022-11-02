@@ -50,15 +50,15 @@
           <div class="col-6 col-sm-10 col-lg-6 ">
             <div class="card">
               <h4>First Name:</h4>
-              <p class="firstname">firstname</p>
+              <p class="firstname"><?php echo $_SESSION['firstname'];?></p>
               <h4>Last Name:</h4>
-              <p class="lastname">lastname</p>
+              <p class="lastname"><?php echo $_SESSION['lastname'];?></p>
               <h4>Email</h4>
-              <p class="emailid">emailid@gmail.com</p>
+              <p class="emailid"><?php echo $_SESSION['email'];?></p>
               <h5>Contact Number:</h5>
-              <p class="contact_no">##########</p>
+              <p class="contact_no"><?php echo $_SESSION['phoneno'];?></p>
               <h5>Monthly Income: </h5>
-              <p class="income">Rs. <span>20000</span> </p>
+              <p class="income">Rs. <span><?php echo $_SESSION['monthly_inc'];?></span> </p>
             </div>
           </div>
         

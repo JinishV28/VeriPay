@@ -211,6 +211,7 @@
     }
     $(document).ready(function(){
       $("#signinBtn").on('click', function(){
+        console.log("clicked");
         var alert = document.getElementById("alert1");
         const form = $("#signinForm")[0];
         fetch("signin.php", {

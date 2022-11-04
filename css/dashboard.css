@@ -55,3 +55,8 @@ body{
     text-align: left;
   }
   
+  .chart-container {
+    width: 50%;
+    height: 50%;
+    margin: auto;
+  }

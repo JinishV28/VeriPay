@@ -117,10 +117,13 @@
         
         <div class="row justify-content-center">
           <div class="col">
-            <div class="card" style="padding-bottom: 0;">
+            <div class="card" style="padding-bottom: 2rem;">
               <h2>Monthly Expense Chart</h2><br>
-              <div id="calendar_basic" style="width: 1000px; height: 350px;">
+              <div class="chart-container">
+              <canvas id="chart"></canvas>
               </div>
+              
+
             </div>
           </div>
         </div>
@@ -139,36 +142,34 @@
       
 
     </section>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  <script>
+      const ctx = document.getElementById("chart").getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ["Food", "Apparel", "Household", "Health",
+          "Education", "Transportation", "Social Life"],
+          datasets: [{
+            label: 'Expenditure',
+            backgroundColor: 'rgba(161, 198, 247, 1)',
+            borderColor: 'rgb(47, 128, 237)',
+            data: [300, 400, 200, 500, 800, 900, 200],
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              }
+            }]
+          }
+        },
+      });
+</script>
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-      google.charts.load("current", {packages:["calendar"]});
-      google.charts.setOnLoadCallback(drawChart);
-  
-   function drawChart() {
-       var dataTable = new google.visualization.DataTable();
-       dataTable.addColumn({ type: 'date', id: 'Date' });
-       dataTable.addColumn({ type: 'number', id: 'Expense' });
-       dataTable.addRows([
-          [ new Date(2022, 9, 13), 370 ],
-          [ new Date(2022, 9, 14), 383 ],
-          [ new Date(2022, 9, 15), 450 ],
-          [ new Date(2022, 9, 16), 381 ],
-          [ new Date(2022, 9, 17), 220 ],
-          
-        ]);
-  
-       var chart = new google.visualization.Calendar(document.getElementById('calendar_basic'));
-  
-       var options = {
-         title: "Expenditure",
-         height: 250,
-       };
-  
-       chart.draw(dataTable, options);
-   }
-    </script>
-    
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 </body>

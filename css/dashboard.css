@@ -1,5 +1,5 @@
 body{
-    background-color: #38E1D7;
+    background-color: #38e1d7;
 }
 /* Navigation Bar */
 
@@ -9,25 +9,26 @@ body{
     font-weight: bold;
     margin-left: 2rem;
   }
-  
-  .nav-item {
-    padding: 0 18px;
+  .navbar{
+  background-color: #38e1d7;
+  }
+  .offcanvas-body{
+    padding: 0;
   }
   
   .nav-link {
     font-size: 1rem;
     font-family: "Montserrat";
-    color: #fff !important;
+    color: white !important;
+    padding-left: 2rem;
   }
-  
-  .navbar-nav {
-    margin-right: 2rem;
-  }
-
+.active{
+  background-color: #38e1d7;
+}
   .btn-primary{
     margin-top: 4px;
   }
-
+  
   /* Content */
   #bills{
     margin-top: 4rem;
@@ -37,6 +38,7 @@ body{
     margin-top: 2rem;
     padding: 2rem;
     padding-bottom: 3rem;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.11), 0 4px 8px 0 rgba(0, 0, 0, 0.1);
   }
   .card:hover{
     box-shadow: black;
@@ -50,5 +52,6 @@ body{
   .hello{
     margin-top: 2rem;
     color: #2d2d2d;
-    text-align: center;
+    text-align: left;
   }
+  

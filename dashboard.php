@@ -119,11 +119,19 @@
           <div class="col">
             <div class="card" style="padding-bottom: 2rem;">
               <h2>Monthly Expense Chart</h2><br>
-              <div class="chart-container">
-              <canvas id="chart"></canvas>
-              </div>
-              
 
+                  <div class="chart-container mb-3">
+                    <canvas id="chart" height="200px"></canvas>
+                  </div>
+                  <br>
+                
+                  <div class="chart-container1" >
+                    <canvas id="piechart" height="100px"></canvas>
+                  </div>
+
+
+
+              
             </div>
           </div>
         </div>
@@ -153,8 +161,18 @@
           "Education", "Transportation", "Social Life"],
           datasets: [{
             label: 'Expenditure',
-            backgroundColor: 'rgba(161, 198, 247, 1)',
-            borderColor: 'rgb(47, 128, 237)',
+            backgroundColor: ['rgba(161, 198, 247, 1)', 'rgba(255, 99, 132)',
+        'rgba(54, 162, 235)',
+        'rgba(255, 206, 86)',
+        'rgba(75, 192, 192)',
+        'rgba(153, 102, 255)',
+        'rgba(255, 159, 64)'],
+            borderColor: ['rgb(47, 128, 237)', 'rgba(255,99,132)',
+        'rgba(54, 162, 235)',
+        'rgba(255, 206, 86)',
+        'rgba(75, 192, 192)',
+        'rgba(153, 102, 255)',
+        'rgba(255, 159, 64)'],
             data: [300, 400, 200, 500, 800, 900, 200],
           }]
         },
@@ -166,6 +184,32 @@
               }
             }]
           }
+        },
+      });
+</script>
+<script>
+      const ctx1 = document.getElementById("piechart").getContext('2d');
+      const myPieChart = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+          labels: ["Food", "Apparel", "Household", "Health",
+          "Education", "Transportation", "Social Life"],
+          datasets: [{
+            label: 'food Items',
+            backgroundColor: ['rgba(23, 155, 147)', 'rgba(30, 199, 189)',
+        'rgba(56, 225, 215)',
+        'rgba(100, 232, 224)',
+        'rgba(144, 238, 233)',
+        'rgba(189, 245, 242)',
+        'rgba(233, 252, 251)'],
+            borderColor:  ['rgba(23, 155, 147)', 'rgba(30, 199, 189)',
+        'rgba(56, 225, 215)',
+        'rgba(100, 232, 224)',
+        'rgba(144, 238, 233)',
+        'rgba(189, 245, 242)',
+        'rgba(233, 252, 251)'],
+            data: [30, 40, 20, 50, 80, 90, 20],
+          }]
         },
       });
 </script>

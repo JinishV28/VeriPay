@@ -1,0 +1,28 @@
+body{
+    background-color: #38e1d7;
+  }
+  .card{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+    margin-bottom: 3rem;
+  
+  }
+  .circle{
+    border-radius: 100%;
+    background-color: #38e1d7;
+    height: 150px;
+    width: 150px;
+    margin: 2rem auto;
+  }
+  .user-img{
+    padding-top: 4px;
+  }
+  
+  .detail-item{
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    margin: 10px auto;
+    text-align: left;
+    /* padding: 4px; */
+  }
+  

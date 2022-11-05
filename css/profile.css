@@ -10,9 +10,13 @@ body{
   .circle{
     border-radius: 100%;
     background-color: #38e1d7;
-    height: 150px;
-    width: 150px;
+    height: 160px;
+    width: 160px;
     margin: 2rem auto;
+    position: absolute;
+    top: 90px;
+    right: 35%;
+    border: solid 4px white;
   }
   .user-img{
     padding-top: 4px;
@@ -25,4 +29,19 @@ body{
     text-align: left;
     /* padding: 4px; */
   }
-  
+  .card{
+    padding: 0;
+  }
+  .bg{
+    height: 200px;
+    background-repeat: no-repeat;
+    background-image: url("../images/blur-bg.jpg");
+    background-size: 700px;
+    border-radius: 5px 5px 0 0;
+  }
+  .hello{
+    margin-top: 5.5rem;
+  }
+  .row{
+    margin: 0 2% 2%;
+  }

@@ -110,12 +110,17 @@
     <div class="container">
       <div class="card mt-5 col-6 col-lg-6 col-sm-10 mx-auto text-center">
         <div class="profile-header">
+          <div class="bg">
+            <!-- <img src="blur-bg.jpg" alt=""> -->
+          </div>
+        </div>
           <div class="circle mb-0">
             <img src="images/find_user.png" alt="User-image" class="user-img">
           </div>
           <h1 class="hello text-center">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
           <div class="row px-4 py-1 mt-5 detail-item">
             <div class="col">
+              
                 <h5>First Name:</h5>
             </div>
             <div class="col">
@@ -146,7 +151,7 @@
                   <p class="contact_no mb-0"><?php echo $_SESSION['phoneno'];?></p>
                 </div>
           </div>
-          <div class="row px-4 py-1 detail-item">
+          <div class="row px-4 py-1 mb-5 detail-item">
                 <div class="col">
                   <h5>Monthly Income: </h5>
                 </div>
@@ -155,7 +160,7 @@
                 </div>
           </div>
 
-        </div>
+        
 
       </div>
 

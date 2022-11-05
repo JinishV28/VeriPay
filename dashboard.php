@@ -121,12 +121,12 @@
               <h2>Monthly Expense Chart</h2><br>
 
                   <div class="chart-container mb-3">
-                    <canvas id="chart" height="200px"></canvas>
+                    <canvas id="chart" height="80px"></canvas>
                   </div>
                   <br>
                 
                   <div class="chart-container1" >
-                    <canvas id="piechart" height="100px"></canvas>
+                    <canvas id="piechart" height="180px"></canvas>
                   </div>
 
 

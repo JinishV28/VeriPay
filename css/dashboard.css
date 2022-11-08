@@ -69,3 +69,6 @@ body{
     height: 50%;
     margin: auto;
   }
+  .input-group{
+    width: 50%!important;
+  }

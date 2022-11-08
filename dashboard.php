@@ -50,6 +50,7 @@
 
       </div>
     </nav> -->
+
     <nav class="navbar navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand mx-4" href="#">VeriPay</a>
@@ -93,11 +94,9 @@
           </div>
           <div class="col">
             <h5 class="mt-5 text-end"><span><?php date_default_timezone_set('Asia/Calcutta'); 
-            echo date("d.m.Y") . " ". date("h:ia"); ?></span></h5>
-            
+            echo date("d.m.Y") . " ". date("h:ia"); ?></span></h5>            
           </div>
         </div>
-
         <div class="row">
           <div class="col">
             <div class="card">
@@ -117,25 +116,18 @@
               <p class="amt">Rs. NAN</p>
             </div>
           </div>
-        </div>
-        
+        </div>        
         <div class="row justify-content-center">
           <div class="col">
             <div class="card" style="padding-bottom: 2rem;">
               <h2>Monthly Expense Chart</h2><br>
-
                   <div class="chart-container mb-3">
                     <canvas id="chart" height="80px"></canvas>
                   </div>
-                  <br>
-                
+                  <br>                
                   <div class="chart-container1" >
                     <canvas id="piechart" height="180px"></canvas>
-                  </div>
-
-
-
-              
+                  </div>             
             </div>
           </div>
         </div>
@@ -143,19 +135,62 @@
           <div class="col">
             <div class="card" style="margin-bottom: 2rem;">
               <h2>Upload Expenses</h2><br>
-              <div class="mb-3 col-4">
-                <!-- <label for="formFile" class="form-label">Upload bill below</label> -->
-                <input class="form-control" type="file" id="formFile">
-              </div>
+              <form action="">
+                  <label for="basic-url" class="form-label">Upload Bill amount</label>
+                  <div class="input-group mb-3 ">
+                    <span class="input-group-text">Rs.</span>
+                    <input type="text" name="amt" class="form-control" aria-label="Amount (to the nearest Rupee)">
+                  </div>
+                  <div class="row">
+                    <div class="col-6">
+                      <label class="form-label" >Select Expense Type</label>
+                      <div class="input-group mb-3">
+                        <select name="Type" id="billType" class="form-select" id="inputGroupSelect01">
+                          <option selected>Choose</option>
+                          <option value="Bill" for="billType">Bill</option>
+                          <option value="Other">Other Expense</option>
+                        </select>
+                      </div>
+                    </div>                    
+                  </div>
+                  <div class="row">                    
+                    <div class="col-4" id="category" >
+                      <label class="form-label" >Select Category</label>
+                      <select class="form-select col-4" name="category" aria-label="">
+                        <option selected>Category </option>
+                        <option value="Electricity Bill" id="">Electricity Bill</option>
+                        <option value="Gas Bill" id="">Gas Bill</option>
+                        <option value="Telephone Bill" id="">Telephone Bill</option>
+                        <option value="Food " id="">Food </option>
+                        <option value="Clothes" id="">Clothes</option>
+                        <option value="Transport" id="">Transport</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="row mt-4">
+                    <div class="col-6">
+                      <label class="form-label" >Enter Customer ID:</label>
+                      <input type="text" class="form-control" name="customer_id" placeholder="Customer ID" id="customer_id" >
+                    </div>                    
+                  </div>
+                  <!-- <div class="row mt-4">
+                    <div class="mb-3 col-4">
+                     <label for="formFile" class="form-label">Upload bill below</label>
+                      <input name="upload" class="form-control" type="file" id="formFile">
+                    </div>
+                  </div> -->  
+                  <input class="btn btn-primary mt-4" type="submit" value="Create">
+              </form>
+              
             </div>
           </div>
         </div>
-      </div>
-      
-
+      </div>    
     </section>
   
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
+  
+                  
   <script>
       const ctx = document.getElementById("chart").getContext('2d');
       const myChart = new Chart(ctx, {

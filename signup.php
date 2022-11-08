@@ -21,12 +21,14 @@
 		$count2 = mysqli_num_rows($query);
 		if($count2 == 0)
 		{
-			if(strlen($password) >= 8)
+			$strongPassword = preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/", $password);
+			if($strongPassword)
 			{
 				if($password == $confirmPassword)
 				{
+					$hash = password_hash($password, PASSWORD_DEFAULT);
 					$sql = $conn->prepare("INSERT INTO signup_info(first_name, last_name, monthly_income, phone_no, username, email, password) VALUES(?, ?, ?, ?, ?, ?, ?);");
-					$sql->bind_param("sssssss", $firstname, $lastname, $monthly_inc, $phoneno, $username, $email, $password);
+					$sql->bind_param("sssssss", $firstname, $lastname, $monthly_inc, $phoneno, $username, $email, $hash);
 					$sql->execute();
 					$success[0] = 1;
 				}

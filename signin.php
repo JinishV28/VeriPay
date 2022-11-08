@@ -8,13 +8,11 @@
     $result = $conn->query($sql);
     $count = mysqli_num_rows($result);
     $row = mysqli_fetch_array($result);
+    $hash = $row['password'];
     $success = array(0,0);
-    if($count==1)
+    if($count == 1)
     {
-        $sql = "Select * from signup_info where(password='$password')";
-        $result = $conn->query($sql);
-        $count = mysqli_num_rows($result);
-        if($count==1)
+        if(password_verify($password, $hash))
         {
             $_SESSION['firstname'] = $row[0];
             $_SESSION['lastname'] = $row[1];

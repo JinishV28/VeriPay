@@ -1,5 +1,9 @@
 <?php 
   session_start();
+  if(!isset($_SESSION['username']))
+  {
+    header("Location:index.html");
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -40,7 +44,7 @@
             <a class="nav-link" href="#bills">Upcoming Bills</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Logout</a>
+            <a class="nav-link" href="logout.php">Logout</a>
           </li>
           <!-- <li class="nav-item">
               <button class="btn btn-primary " type="button" style="font-family: Montserrat;" data-bs-toggle="modal" data-bs-target="#signUp">Sign Up</button>

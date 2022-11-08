@@ -11,8 +11,9 @@
 <head>
   <meta charset="utf-8">
   <title>Dashboard</title>
-  <link rel="stylesheet" href="dashboard.css">
+  
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src="https://kit.fontawesome.com/77ca180115.js" crossorigin="anonymous"></script>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 
@@ -92,28 +93,32 @@
           <div class="col">
           <h1 class="hello ">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
           </div>
-          <div class="col">
-            <h5 class="mt-5 text-end"><span><?php date_default_timezone_set('Asia/Calcutta'); 
-            echo date("d.m.Y") . " ". date("h:ia"); ?></span></h5>            
+          <div class="col-3">
+            <div class="card px-3 py-2" style="color:white; background-color:#2d2d2d;">
+              <h5 class="text-center mt-1 mb-1">
+              <i class="fa-regular fa-clock"></i>
+                <span><?php date_default_timezone_set('Asia/Calcutta'); 
+              echo date("d.m.Y") . " ". date("h:ia"); ?></span></h5>     
+            </div>       
           </div>
         </div>
         <div class="row">
           <div class="col">
-            <div class="card">
+            <div class="card card-1">
               <h2>Income</h2><br>
-              <p class="amt"><?php echo $_SESSION['monthly_inc'];?></p>
+              <p class="amt card-1"><?php echo $_SESSION['monthly_inc'];?></p>
             </div>
           </div>
           <div class="col">
-            <div class="card">
+            <div class="card card-2">
               <h2>Expenditure</h2><br>
-              <p class="amt">Rs. NAN</p>
+              <p class="amt card-2">Rs. NAN</p>
             </div>
           </div>
           <div class="col">
-            <div class="card">
+            <div class="card card-3">
               <h2>Balance</h2><br>
-              <p class="amt">Rs. NAN</p>
+              <p class="amt card-3">Rs. NAN</p>
             </div>
           </div>
         </div>        

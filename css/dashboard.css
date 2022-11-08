@@ -53,6 +53,7 @@ body{
     margin-top: 2rem;
     color: #2d2d2d;
     text-align: left;
+    text-shadow: 3px 3px rgba(0, 0, 0, 0.3);
   }
   
   .chart-container {
@@ -71,4 +72,20 @@ body{
   }
   .input-group{
     width: 50%!important;
+  }
+  .card-1{
+    /* background-color: #2a78de; */
+    background-color: orange;
+    color: white;
+    /* box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.4), 0 4px 8px 0 rgba(0, 0, 0, 0.4);
+   */
+  }
+  .card-3{
+    /* background-color: #aa38f6; */
+    background-color: #aa38f6;
+    color: white;
+  }
+  .card-2{
+    background-color: #f63897;
+    color: white;
   }

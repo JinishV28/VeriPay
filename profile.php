@@ -106,7 +106,7 @@
 
       </div>
     </nav> -->
-    <style>
+    <!-- <style>
               .file-upload {
                   display: none;
               }
@@ -133,7 +133,7 @@
                   transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
                   color: #1f8982;
                 }
-          </style>
+          </style> -->
 
     <section class="content">
     <div class="container">
@@ -148,12 +148,12 @@
             <img src="images/find_user.png" alt="User-image" id="user-img" class="user-img profile-pic">
             
           </div>
-          <div class="p-image">
+          <!-- <div class="p-image">
             <i class="fa fa-camera upload-button"></i>
               <input class="file-upload" type="file" accept="image/*"/>
-            </div>
+            </div> -->
 
-          <!-- <p class="text-end mt-5 pt-5" style="font-size:12px; padding-right: 3.5rem;">Upload Display picture: 
+          <p class="text-end mt-5 pt-5" style="font-size:12px; padding-right: 3.5rem;">Upload Display picture: 
           <input type="file" id="image-input" name="profile_img" accept="image/jpeg, image/png, image/jpg">
           <script>
                     const image_input = document.querySelector("#image-input");
@@ -167,8 +167,8 @@
                       reader.readAsDataURL(this.files[0]);
                     });
                   </script>
-          </p> -->
-          <h1 class="hello  text-center">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
+          </p>
+          <h1 class="hello mt-3 text-center">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
           <div class="row px-4 py-1 mt-5 detail-item">
             <div class="col">
               
@@ -218,7 +218,7 @@
 
     </section>
 
-    <script >
+    <!-- <script >
             $(document).ready(function() {
               var readURL = function(input) {
                   if (input.files && input.files[0]) {
@@ -240,7 +240,7 @@
                 $(".file-upload").click();
               });
               });
-       </script>
+       </script> -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 </body>

@@ -66,7 +66,7 @@
               <input class="form-control me-5 ms-4 mt-4" type="search" placeholder="Search" aria-label="Search" size="10" onkeyup="showResult(this.value)">              
             </form>
             <div id="livesearch" class="livesearch"></div>
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link " href="dashboard.php">Dashboard</a>
@@ -78,7 +78,7 @@
                 <a class="nav-link" href="dashboard.php#bills">Expenses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="index.php">Logout</a>
+                <a class="nav-link" href="logout.php">Logout</a>
               </li>
             </ul>
           </div>

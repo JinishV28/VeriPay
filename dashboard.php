@@ -16,7 +16,7 @@
   <script src="https://kit.fontawesome.com/77ca180115.js" crossorigin="anonymous"></script>
   
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/css/bootstrap-select.min.css">
   <link rel="stylesheet" href="css/dashboard.css">
 
   <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -66,7 +66,7 @@
           <div class="offcanvas-body">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link" href="index.php">Home</a>
+                <a class="nav-link" href="index.html">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="#">Dashboard</a>
@@ -78,7 +78,7 @@
                 <a class="nav-link" href="#">Expenses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="imdex.php">Logout</a>
+                <a class="nav-link" href="logout.php">Logout</a>
               </li>
             </ul>
           </div>
@@ -106,7 +106,7 @@
           <div class="col">
             <div class="card card-1">
               <h2>Income</h2><br>
-              <p class="amt card-1"><?php echo $_SESSION['monthly_inc'];?></p>
+              <p class="amt card-1"><?php echo "Rs. ".$_SESSION['monthly_inc'];?></p>
             </div>
           </div>
           <div class="col">
@@ -140,20 +140,64 @@
           <div class="col">
             <div class="card" style="margin-bottom: 2rem;">
               <h2>Upload Expenses</h2><br>
-              <form action="">
+              <!-- Button trigger modal -->
+              <div class="row">
+                <div class="col-3">
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadedExpenses">
+                    Uploaded Expenses
+                  </button>
+                </div>
+              </div>
+              <br>
+              <!-- Modal -->
+              <div class="modal fade modal-lg" id="uploadedExpenses"  role="dialog">
+                <div class="modal-dialog" role="content">
+                  <div class="modal-content" >
+                    <div class="modal-header">
+                      <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body" id="modalBody">
+                      <p id="noRecord"></p>
+                      <br>
+                      <div class="row-content" id="table">
+                          <table class="table table-striped">
+                              <thead style="font-style: bold;">
+                              <tr>
+                                <th>USERNAME</th>
+                                <th>DATE</th>
+                                <th>AMOUNT</th>
+                                <th>TYPE</th>
+                                <th>CATEGORY</th>
+                                <th>CUSTOMER ID</th>
+                              </tr>
+                            </thead>
+                            <tbody id="tableBody"></tbody>
+                          </table>
+                      </div>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <form id="expenseForm" action="">
                   <label for="basic-url" class="form-label">Upload Bill amount</label>
                   <div class="input-group mb-3 ">
                     <span class="input-group-text">Rs.</span>
-                    <input type="text" name="amt" class="form-control" aria-label="Amount (to the nearest Rupee)">
+                    <input type="number" name="amt" class="form-control" aria-label="Amount (to the nearest Rupee)" required>
                   </div>
                   <div class="row">
                     <div class="col-6">
                       <label class="form-label" >Select Expense Type</label>
                       <div class="input-group mb-3">
-                        <select name="Type" id="billType" class="form-select" id="inputGroupSelect01">
-                          <option selected>Choose</option>
-                          <option value="Bill" for="billType">Bill</option>
-                          <option value="Other">Other Expense</option>
+                        <select name="type" id="billType" class="form-select" id="inputGroupSelect01" required>
+                          <option value="" selected>Choose</option>
+                          <option class="bill" value="Bill" for="billType">Bill</option>
+                          <option class="other" value="Other">Other Expense</option>
                         </select>
                       </div>
                     </div>                    
@@ -161,21 +205,21 @@
                   <div class="row">                    
                     <div class="col-4" id="category" >
                       <label class="form-label" >Select Category</label>
-                      <select class="form-select col-4" name="category" aria-label="">
-                        <option selected>Category </option>
-                        <option value="Electricity Bill" id="">Electricity Bill</option>
-                        <option value="Gas Bill" id="">Gas Bill</option>
-                        <option value="Telephone Bill" id="">Telephone Bill</option>
-                        <option value="Food " id="">Food </option>
-                        <option value="Clothes" id="">Clothes</option>
-                        <option value="Transport" id="">Transport</option>
+                      <select class="form-select col-4" name="category" aria-label="" required>
+                        <option value="" selected>Select Type First</option>
+                        <option class="bill" value="Electricity Bill">Electricity Bill</option>
+                        <option class="bill" value="Gas Bill">Gas Bill</option>
+                        <option class="bill" value="Telephone Bill">Telephone Bill</option>
+                        <option class="other" value="Food">Food </option>
+                        <option class="other" value="Clothes">Clothes</option>
+                        <option class="other" value="Transport">Transport</option>
                       </select>
                     </div>
                   </div>
                   <div class="row mt-4">
                     <div class="col-6">
                       <label class="form-label" >Enter Customer ID:</label>
-                      <input type="text" class="form-control" name="customer_id" placeholder="Customer ID" id="customer_id" >
+                      <input type="text" class="form-control" name="customer_id" placeholder="Customer ID" id="customer_id" required>
                     </div>                    
                   </div>
                   <!-- <div class="row mt-4">
@@ -184,9 +228,10 @@
                       <input name="upload" class="form-control" type="file" id="formFile">
                     </div>
                   </div> -->  
-                  <input class="btn btn-primary mt-4" type="submit" value="Create">
+                  <input class="btn btn-primary mt-4" type="submit" id="upload_expense" value="Upload Expense">
               </form>
-              
+              <br>
+              <div id="alert" class="alert"></div>
             </div>
           </div>
         </div>
@@ -259,6 +304,89 @@
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.2/js/bootstrap-select.min.js"></script>
+  <?php
+      require "dbconnection.php";
+
+      $username = $_SESSION['username'];
+      $sql = "Select * from expenses where username='$username'";
+      $result = $conn->query($sql);
+      $rows = array();
+      while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+      {
+        array_push($rows,$row);
+      }
+  ?>
+  
+  <script>
+    $(document).ready(function(){
+      var rows = JSON.parse('<?= json_encode($rows) ?>');
+      console.log(rows);
+      var alert = document.getElementById("alert");
+      $("#category option").hide();
+      $("#billType").on('change', function(e){
+        var selected = $('select[name="type"] :selected').attr('class');
+        $("#category option").hide();
+        $("#customer_id").prop('disabled',true);
+        $("#category option[class="+selected+"]").show();
+        if(selected == "bill"){
+          $("#customer_id").prop('disabled',false);
+        }
+      });
+      $("#expenseForm").submit(function(e){
+        console.log("clicked")
+        const form = $("#expenseForm")[0];
+        fetch("uploadExpense.php", {
+        method : "POST",
+        body: new FormData(form)
+        })
+        .then(response=>response.json())
+        .then(json =>
+        {
+          if(json[0] == 1){
+              alert.classList.add("alert-success");
+              alert.innerHTML = "<center><b>Uploaded successfully.<b><center>";     
+            }
+          else{
+            alert.classList.add("alert-danger");
+            alert.innerHTML = "<center><b>Incorrect Customer Id. Try Again<b><center>";
+          }
+        })
+        return false;
+      });
+      $("#uploadedExpenses").on('show.bs.modal',function(){
+        var table = document.getElementById('table');
+        var length = Object.keys(rows).length;
+        console.log(length);
+        if(length>0)
+        {
+          table.style.display = "block";
+          document.getElementById("noRecord").innerHTML = ``;
+          document.getElementById("tableBody").innerHTML = ``;
+          var tRows= ``;
+          let i = 0;
+          let j = 0;
+          for(i=0;i<length;i++)
+          {
+            tRows+=`<tr>`;
+            for(j=0;j<=5;j++)
+            {
+              tRows+=`<td>${rows[i][j]}&nbsp;</td>`;
+            }
+            tRows+=`</tr>`;
+            document.getElementById("tableBody").innerHTML = tRows;
+          }
+        }
+        else{
+            table.style.display = "none";
+            document.getElementById("noRecord").innerHTML = `<b>Hurray! No Expenses.<b>`;
+        }
+      });
+
+
+    });
+  </script>
 
 </body>
 

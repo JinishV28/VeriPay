@@ -209,7 +209,7 @@
       window.location.replace("dashboard.php");
     }
     $(document).ready(function(){
-      $("#signinBtn").on('click', function(){
+      $("#signinForm").submit( function(){
         console.log("clicked");
         var alert = document.getElementById("alert1");
         const form = $("#signinForm")[0];

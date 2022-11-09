@@ -18,6 +18,12 @@ body{
     right: 35%;
     border: solid 4px white;
   }
+  #display-image{
+    height: 160px;
+    width: 160px;
+    background-position: center;
+    background-size: contain;
+  }
   .user-img{
     padding-top: 4px;
   }
@@ -44,4 +50,32 @@ body{
   }
   .row{
     margin: 0 2% 2%;
+  }
+
+  /* Profile Image */
+
+  .file-upload {
+    display: none;
+}
+.fa{
+  font-size: 1.8rem;
+    color: #069b92;
+}
+  .p-image {
+    position: absolute;
+    top: 250px;
+    right: 30px;
+    color: #1f8982;
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  }
+  .p-image:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+  }
+  .upload-button {
+    font-size: 1.2em;
+  }
+  
+  .upload-button:hover {
+    transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+    color: #1f8982;
   }

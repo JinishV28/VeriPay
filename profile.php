@@ -65,16 +65,16 @@
                 <a class="nav-link" href="index.php">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link " href="#">Dashboard</a>
+                <a class="nav-link " href="dashboard.php">Dashboard</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link active" href="profile.php">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Expenses</a>
+                <a class="nav-link" href="dashboard.php#bills">Expenses</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="imdex.php">Logout</a>
+                <a class="nav-link" href="index.php">Logout</a>
               </li>
             </ul>
           </div>
@@ -106,18 +106,69 @@
 
       </div>
     </nav> -->
+    <style>
+              .file-upload {
+                  display: none;
+              }
+              .fa{
+                font-size: 1.8rem;
+                  color: #069b92;
+              }
+                .p-image {
+                  position: absolute;
+                  top: 110px;
+                  right: 10px;
+                  font-size:1.8rem;
+                  color: #1f8982;
+                  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+                }
+                .p-image:hover {
+                  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+                }
+                .upload-button {
+                  font-size: 1.2em;
+                }
+                
+                .upload-button:hover {
+                  transition: all .3s cubic-bezier(.175, .885, .32, 1.275);
+                  color: #1f8982;
+                }
+          </style>
+
     <section class="content">
     <div class="container">
-      <div class="card mt-5 col-6 col-lg-6 col-sm-10 mx-auto text-center">
+      <div class="card mt-5 col-6 col-lg-6 col-sm-10 mx-auto text-center" style="padding-bottom:5em;">
         <div class="profile-header">
           <div class="bg">
             <!-- <img src="blur-bg.jpg" alt=""> -->
           </div>
         </div>
-          <div class="circle mb-0">
-            <img src="images/find_user.png" alt="User-image" class="user-img">
+          <div class="circle mb-0 " id="display-image">
+                        <!-- User-Image -->
+            <img src="images/find_user.png" alt="User-image" id="user-img" class="user-img profile-pic">
+            
           </div>
-          <h1 class="hello text-center">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
+          <div class="p-image">
+            <i class="fa fa-camera upload-button"></i>
+              <input class="file-upload" type="file" accept="image/*"/>
+            </div>
+
+          <!-- <p class="text-end mt-5 pt-5" style="font-size:12px; padding-right: 3.5rem;">Upload Display picture: 
+          <input type="file" id="image-input" name="profile_img" accept="image/jpeg, image/png, image/jpg">
+          <script>
+                    const image_input = document.querySelector("#image-input");
+
+                    image_input.addEventListener("change", function() {
+                      const reader = new FileReader();
+                      reader.addEventListener("load", () => {
+                        const uploaded_image = reader.result;
+                        document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+                      });
+                      reader.readAsDataURL(this.files[0]);
+                    });
+                  </script>
+          </p> -->
+          <h1 class="hello  text-center">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
           <div class="row px-4 py-1 mt-5 detail-item">
             <div class="col">
               
@@ -126,6 +177,7 @@
             <div class="col">
                 <p class="firstname mb-0"><?php echo $_SESSION['firstname'];?></p>
             </div>
+            
           </div>
           <div class="row px-4 py-1 detail-item">
                 <div class="col">
@@ -140,7 +192,7 @@
                   <h5>Email:</h5>
                 </div>
                 <div class="col">
-                <p class="emailid mb-0"><?php echo $_SESSION['lastname'];?></p>
+                <p class="emailid mb-0"><?php echo $_SESSION['email'];?></p>
                 </div>
           </div>
           <div class="row px-4 py-1 detail-item">
@@ -151,73 +203,44 @@
                   <p class="contact_no mb-0"><?php echo $_SESSION['phoneno'];?></p>
                 </div>
           </div>
-          <div class="row px-4 py-1 mb-5 detail-item">
+          <div class="row px-4 py-1  detail-item">
                 <div class="col">
                   <h5>Monthly Income: </h5>
                 </div>
                 <div class="col">
                   <p class="income mb-0">Rs. <span><?php echo $_SESSION['monthly_inc'];?></span> </p>
-                </div>
-          </div>
-
-        
+                </div>                
+          </div>        
 
       </div>
-
     </div>
-      <!-- <div class="container">
-        <h1 class="hello text-center">Hello, <span><?php echo $_SESSION['username'] ?></span></h1>
-        <div class="row justify-content-center" style="text-align: center;">
-          <div class="col-6 col-sm-10 col-lg-8 ">
-            <div class="card" style="text-align:left; padding: auto 4rem; background-color:#f3f3f3;">
-              <div class="row px-4">
-                <div class="col">
-                <h4>First Name:</h4>
-                </div>
-                <div class="col">
-                <p class="firstname"><?php echo $_SESSION['firstname'];?></p>
-                </div>
-              </div>
-              <div class="row px-4">
-                <div class="col">
-                  <h4>Last Name:</h4>
-                </div>
-                <div class="col">
-                  <p class="lastname"><?php echo $_SESSION['lastname'];?></p>
-                </div>
-              </div>
-              <div class="row px-4">
-                <div class="col">
-                  <h4>Email:</h4>
-                </div>
-                <div class="col">
-                <p class="emailid"><?php echo $_SESSION['lastname'];?></p>
-                </div>
-              </div>
-              <div class="row px-4">
-                <div class="col">
-                <h4>Contact Number:</h4>
-                </div>
-                <div class="col">
-                <p class="contact_no"><?php echo $_SESSION['phoneno'];?></p>
-                </div>
-              </div>
-              <div class="row px-4">
-                <div class="col">
-                <h4>Monthly Income: </h4>
-                </div>
-                <div class="col">
-                <p class="income">Rs. <span><?php echo $_SESSION['monthly_inc'];?></span> </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-        
-      </div> -->
+      
 
     </section>
 
+    <script >
+            $(document).ready(function() {
+              var readURL = function(input) {
+                  if (input.files && input.files[0]) {
+                      var reader = new FileReader();
+
+                      reader.onload = function (e) {
+                          $('.profile-pic').attr('src', e.target.result);
+                      }
+
+                      reader.readAsDataURL(input.files[0]);
+                  }
+              }
+
+              $(".file-upload").on('change', function(){
+                  readURL(this);
+              });
+
+              $(".upload-button").on('click', function() {
+                $(".file-upload").click();
+              });
+              });
+       </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 
 </body>

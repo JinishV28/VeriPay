@@ -75,9 +75,6 @@
                 <a class="nav-link" href="profile.php">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">Expenses</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout</a>
               </li>
             </ul>
@@ -97,8 +94,7 @@
             <div class="card px-3 py-2" style="color:white; background-color:#2d2d2d;">
               <h5 class="text-center mt-1 mb-1">
               <i class="fa-regular fa-clock"></i>
-                <span><?php date_default_timezone_set('Asia/Calcutta'); 
-              echo date("d.m.Y") . " ". date("h:ia"); ?></span></h5>     
+                <span id="time"></span></h5>     
             </div>       
           </div>
         </div>
@@ -112,38 +108,43 @@
           <div class="col">
             <div class="card card-2">
               <h2>Expenditure</h2><br>
-              <p class="amt card-2">Rs. NAN</p>
+              <p class="amt card-2"></p>
             </div>
           </div>
           <div class="col">
             <div class="card card-3">
-              <h2>Balance</h2><br>
-              <p class="amt card-3">Rs. NAN</p>
+              <h2>Savings</h2><br>
+              <p class="amt card-3"></p>
             </div>
           </div>
         </div>        
         <div class="row justify-content-center">
           <div class="col">
             <div class="card" style="padding-bottom: 2rem;">
-              <h2>Monthly Expense Chart</h2><br>
+              <h2><center>Monthly Savings Chart</center></h2><br>
                   <div class="chart-container mb-3">
                     <canvas id="chart" height="80px"></canvas>
                   </div>
-                  <br>                
+                  <br>
+                  <h2><center>Category Wise Expense Chart</center></h2><br>                
                   <div class="chart-container1" >
                     <canvas id="piechart" height="180px"></canvas>
-                  </div>             
+                  </div>
+                  <br><br>
+                  <p id="minGoal" style="font-weight: bold; font-size: 20px;"></p>
+                  <br><br><br>
+                  <p id="Savingsgoal" style="font-weight: bold; font-size: 35px;">hello</p>             
             </div>
           </div>
         </div>
         <div class="row " id="bills">
           <div class="col">
             <div class="card" style="margin-bottom: 2rem;">
-              <h2>Upload Expenses</h2><br>
               <!-- Button trigger modal -->
               <div class="row">
-                <div class="col-3">
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadedExpenses">
+                <h2 class="col-5">Upload Expenses</h2>
+                <div class="offset-4 col-3">
+                  <button type="button" class="btn btn-warning" style="color: white" data-bs-toggle="modal" data-bs-target="#uploadedExpenses">
                     Uploaded Expenses
                   </button>
                 </div>
@@ -164,7 +165,6 @@
                           <table class="table table-striped">
                               <thead style="font-style: bold;">
                               <tr>
-                                <th>USERNAME</th>
                                 <th>DATE</th>
                                 <th>AMOUNT</th>
                                 <th>TYPE</th>
@@ -177,8 +177,7 @@
                       </div>
                     </div>
                     <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                      <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
                     </div>
                   </div>
                 </div>
@@ -210,7 +209,7 @@
                         <option class="bill" value="Electricity Bill">Electricity Bill</option>
                         <option class="bill" value="Gas Bill">Gas Bill</option>
                         <option class="bill" value="Telephone Bill">Telephone Bill</option>
-                        <option class="other" value="Food">Food </option>
+                        <option class="other" value="Food">Food</option>
                         <option class="other" value="Clothes">Clothes</option>
                         <option class="other" value="Transport">Transport</option>
                       </select>
@@ -241,66 +240,9 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
   
                   
-  <script>
-      const ctx = document.getElementById("chart").getContext('2d');
-      const myChart = new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: ["Food", "Apparel", "Household", "Health",
-          "Education", "Transportation", "Social Life"],
-          datasets: [{
-            label: 'Expenditure',
-            backgroundColor: ['rgba(161, 198, 247, 1)', 'rgba(255, 99, 132)',
-        'rgba(54, 162, 235)',
-        'rgba(255, 206, 86)',
-        'rgba(75, 192, 192)',
-        'rgba(153, 102, 255)',
-        'rgba(255, 159, 64)'],
-            borderColor: ['rgb(47, 128, 237)', 'rgba(255,99,132)',
-        'rgba(54, 162, 235)',
-        'rgba(255, 206, 86)',
-        'rgba(75, 192, 192)',
-        'rgba(153, 102, 255)',
-        'rgba(255, 159, 64)'],
-            data: [300, 400, 200, 500, 800, 900, 200],
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: true,
-              }
-            }]
-          }
-        },
-      });
-</script>
+  
 <script>
-      const ctx1 = document.getElementById("piechart").getContext('2d');
-      const myPieChart = new Chart(ctx1, {
-        type: 'pie',
-        data: {
-          labels: ["Food", "Apparel", "Household", "Health",
-          "Education", "Transportation", "Social Life"],
-          datasets: [{
-            label: 'food Items',
-            backgroundColor: ['rgba(23, 155, 147)', 'rgba(30, 199, 189)',
-        'rgba(56, 225, 215)',
-        'rgba(100, 232, 224)',
-        'rgba(144, 238, 233)',
-        'rgba(189, 245, 242)',
-        'rgba(233, 252, 251)'],
-            borderColor:  ['rgba(23, 155, 147)', 'rgba(30, 199, 189)',
-        'rgba(56, 225, 215)',
-        'rgba(100, 232, 224)',
-        'rgba(144, 238, 233)',
-        'rgba(189, 245, 242)',
-        'rgba(233, 252, 251)'],
-            data: [30, 40, 20, 50, 80, 90, 20],
-          }]
-        },
-      });
+      
 </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
@@ -318,12 +260,80 @@
         array_push($rows,$row);
       }
   ?>
-  
+  <?php
+
+    function getSavingsOfMonth($month) {
+      require "dbconnection.php";
+      $username = $_SESSION['username'];
+      $sql = "Select amount from expenses where(username='$username' and MONTH(date)='$month')";
+      $result = $conn->query($sql);
+      $amt = array();
+      $i = 0;
+      while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+      {
+        $amt[$i] = $row[0];
+        $i += 1;
+      }
+      $totalMonthAmt = array_sum($amt);
+      $savingsOfMonth = $_SESSION['monthly_inc'] - $totalMonthAmt;
+      return $savingsOfMonth;
+    }
+
+    $amtOfSavings = array();
+    for($i = 1; $i <= 12; $i += 1) {
+      array_push($amtOfSavings, getSavingsOfMonth($i));
+    }
+  ?>
+
+  <?php
+
+  function getAmountOfType($category) {
+    require "dbconnection.php";
+    $username = $_SESSION['username'];
+    $sql = "Select amount from expenses where(username='$username' and category='$category')";
+    $result = $conn->query($sql);
+    $amt = array();
+    $i = 0;
+    while($row = mysqli_fetch_array($result, MYSQLI_NUM))
+    {
+      $amt[$i] = $row[0];
+      $i += 1;
+    }
+    $totalCategoryAmt = array_sum($amt);
+    return $totalCategoryAmt;
+  }
+  $categories = array("Food","Clothes","Transport","Electricity Bill","Gas Bill","Telephone Bill");
+  $amtsByCategory = array();
+  foreach($categories as $category) {
+    array_push($amtsByCategory, getAmountOfType($category));
+  }
+  ?>
+
   <script>
+    function pageReload(){
+       location.reload(true);
+    }
     $(document).ready(function(){
       var rows = JSON.parse('<?= json_encode($rows) ?>');
-      console.log(rows);
+      var amounts = JSON.parse('<?= json_encode($amtOfSavings) ?>');
+      var amountsByCategory = JSON.parse('<?= json_encode($amtsByCategory) ?>');
+
       var alert = document.getElementById("alert");
+      const d = new Date();
+      let month = d.getMonth();
+      var expense = <?= $_SESSION['monthly_inc'] ?> - amounts[month];
+      if(amounts[month] == 0)
+      {
+        $(".amt")[1].innerHTML = `Rs. NAN`;
+        $(".amt")[2].innerHTML = `Rs. NAN`;
+      }
+      else
+      {
+        $(".amt")[1].innerHTML = `Rs. ${expense}`;
+        $(".amt")[2].innerHTML = `Rs. ${amounts[month]}`;
+
+      }
+
       $("#category option").hide();
       $("#billType").on('change', function(e){
         var selected = $('select[name="type"] :selected').attr('class');
@@ -334,8 +344,8 @@
           $("#customer_id").prop('disabled',false);
         }
       });
+      
       $("#expenseForm").submit(function(e){
-        console.log("clicked")
         const form = $("#expenseForm")[0];
         fetch("uploadExpense.php", {
         method : "POST",
@@ -346,19 +356,20 @@
         {
           if(json[0] == 1){
               alert.classList.add("alert-success");
-              alert.innerHTML = "<center><b>Uploaded successfully.<b><center>";     
+              alert.innerHTML = "<center><b>Uploaded successfully.<b><center>";
+              setTimeout("pageReload()", 2000);     
             }
           else{
             alert.classList.add("alert-danger");
             alert.innerHTML = "<center><b>Incorrect Customer Id. Try Again<b><center>";
           }
         })
-        return false;
+       return false;
       });
+
       $("#uploadedExpenses").on('show.bs.modal',function(){
         var table = document.getElementById('table');
         var length = Object.keys(rows).length;
-        console.log(length);
         if(length>0)
         {
           table.style.display = "block";
@@ -370,7 +381,7 @@
           for(i=0;i<length;i++)
           {
             tRows+=`<tr>`;
-            for(j=0;j<=5;j++)
+            for(j=1;j<=5;j++)
             {
               tRows+=`<td>${rows[i][j]}&nbsp;</td>`;
             }
@@ -384,7 +395,73 @@
         }
       });
 
+      const ctx = document.getElementById("chart").getContext('2d');
+      const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ["Jan", "Feb", "Mar", "April",
+          "May", "June", "July", "Aug", "Sep", "Oct", "Nov", "Dec"],
+          datasets: [{
+            label: 'Monthly Savings Dataset',
+            data: amounts,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.2
+          }]
+        },
+        options: {
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true,
+              }
+            }]
+          }
+        },
+      });
 
+      const ctx1 = document.getElementById("piechart").getContext('2d');
+      const myPieChart = new Chart(ctx1, {
+        type: 'pie',
+        data: {
+          labels: ["Food", "Clothes", "Transport", "Electricty Bill",
+          "Gas Bill", "Telephone Bill"],
+          datasets: [{
+            label: 'Categorywise Expenditure Dataset',
+            backgroundColor: ['rgba(161, 198, 247, 1)', 'rgba(255, 99, 132)',
+        'rgba(54, 162, 235)',
+        'rgba(255, 206, 86)',
+        'rgba(75, 192, 192)',
+        'rgba(153, 102, 255)',
+        'rgba(255, 159, 64)'],
+            borderColor:  ['rgba(161, 198, 247, 1)', 'rgba(255, 99, 132)',
+        'rgba(54, 162, 235)',
+        'rgba(255, 206, 86)',
+        'rgba(75, 192, 192)',
+        'rgba(153, 102, 255)',
+        'rgba(255, 159, 64)'],
+            data: amountsByCategory,
+          }]
+        },
+      });
+      var goalMssg = document.getElementById("Savingsgoal");
+      var mingoalMssg = document.getElementById("minGoal");
+      targetSavings = <?= $_SESSION['monthly_inc'] ?>/5;
+      mingoalMssg.innerHTML = `<center>Minimum Savings Target: ${targetSavings}</center>`;
+
+      if(amounts[month] >= targetSavings)
+      {
+        goalMssg.innerHTML = `<center><span style="color: green;">Wohoo!</span> You Have Enough Savings For This Month</center>`;
+      }
+      else{
+        goalMssg.innerHTML = `<center><span style="color: red;">Watch Out!</span> You Have Exceeded Expenses For This Month</center>`;
+      }
+      var time = document.getElementById("time");
+      updateTime = () => {
+        time.innerHTML = " "+new Date().toDateString()+' ' +new Date().toTimeString().split(' ')[0];
+      };
+      updateTime();
+      setInterval(updateTime, 1000);
     });
   </script>
 

@@ -75,9 +75,6 @@
                 <a class="nav-link active" href="profile.php">Profile</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="dashboard.php#bills">Expenses</a>
-              </li>
-              <li class="nav-item">
                 <a class="nav-link" href="logout.php">Logout</a>
               </li>
             </ul>
@@ -147,7 +144,15 @@
             <!-- <img src="blur-bg.jpg" alt=""> -->
           </div>
         </div>
-          <div class="circle mb-0 " id="display-image">
+        <?php
+          require "dbconnection.php";
+          
+          $username = $_SESSION['username'];
+          $sql = "Select img from signup_info where(username='$username')";
+          $result = $conn->query($sql);
+          $pp = mysqli_fetch_array($result)[0];
+          ?>
+          <div class="circle mb-0 " id="display-image" style="background: url('<?= $pp?>'); background-size: 150px;">
                         <!-- User-Image -->
             <!-- <img src="images/find_user.png" alt="User-image" id="user-img" class="user-img profile-pic">
              -->
@@ -158,7 +163,8 @@
             </div> -->
 
           <p class="text-end mt-5 pt-5" style="font-size:12px; padding-right: 3.5rem;">Upload Display picture: 
-          <input type="file" id="image-input" name="profile_img" accept="image/jpeg, image/png, image/jpg">
+          <input type="file" id="image-input" name="img" accept="image/jpeg, image/png, image/jpg">
+          
           <script>
                     const image_input = document.querySelector("#image-input");
 
@@ -166,7 +172,17 @@
                       const reader = new FileReader();
                       reader.addEventListener("load", () => {
                         const uploaded_image = reader.result;
+                        fetch("image.php", {
+                            method : "POST",
+                            body: JSON.stringify({img: uploaded_image,}),
+                            headers: {
+                              "Content-type": "application/json; charset=UTF-8"
+                            }
+                        })
+                        .then(response=>response.text())
+                        .then(text => console.log(text));
                         document.querySelector("#display-image").style.backgroundImage = `url(${uploaded_image})`;
+                        document.querySelector("#display-image").style.backgroundSize = '150px';
                       });
                       reader.readAsDataURL(this.files[0]);
                     });
@@ -245,8 +261,7 @@
               });
               });
        </script> -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>         
 </body>
 
 </html>

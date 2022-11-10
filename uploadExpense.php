@@ -12,10 +12,42 @@
     if($type == "Bill")
     {
         $customer_id = $_POST['customer_id'];
-        $sql = $conn->prepare("INSERT INTO expenses(username, date, amount, type, category, customer_id) VALUES (?,?,?,?,?,?)");
-        $sql->bind_param("ssssss", $username, $date, $amount, $type, $category, $customer_id);
-        $sql->execute();
-        $success[0] = 1;
+        if($category == "Electricity Bill")
+        {
+            if(preg_match("/^3082\d{12}$/",$customer_id))
+            {
+                $sql = $conn->prepare("INSERT INTO expenses(username, date, amount, type, category, customer_id) VALUES (?,?,?,?,?,?)");
+                $sql->bind_param("ssssss", $username, $date, $amount, $type, $category, $customer_id);
+                $sql->execute();
+                $success[0] = 1;
+            }
+            else
+            {
+                $success[0] == 2;
+            }
+        }
+
+        if($category == "Gas Bill")
+        {
+            if(preg_match("/^210000\d{6}$/",$customer_id))
+            {
+                $sql = $conn->prepare("INSERT INTO expenses(username, date, amount, type, category, customer_id) VALUES (?,?,?,?,?,?)");
+                $sql->bind_param("ssssss", $username, $date, $amount, $type, $category, $customer_id);
+                $sql->execute();
+                $success[0] = 1;
+            }
+        }
+
+        if($category == "Telephone Bill")
+        {
+            if(preg_match("/^3\d{9}$/",$customer_id))
+            {
+                $sql = $conn->prepare("INSERT INTO expenses(username, date, amount, type, category, customer_id) VALUES (?,?,?,?,?,?)");
+                $sql->bind_param("ssssss", $username, $date, $amount, $type, $category, $customer_id);
+                $sql->execute();
+                $success[0] = 1;
+            }
+        }
     }
     else
     {
